@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant project</title>
+    
+</head>
+<body>
+    <h1>Bestfoods restaurant</h1>
+      <ul id="menu-item">
+          <li>home</li>
+          <li>about us </li>
+          <li>our meals</li>
+      </ul>
+        <p>Welcome to Bestfoods restaurant. This restaurant provides only halal meals prepared by proffessions enjoy your meals
+          and feel free to come back next time, Our priority is our customers's happiness .
+        </p>
+        
+      <h2>List of our restuarant pages</h2>
+      <ul>
+       <li id="css-style">category page</li>
+       <li class="unordered-list">Customer_order page</li>
+       <li class="unordered-list">fooditem page</li>
+       <li class="unordered-list">menu page</li>
+       <li class="unordered-list">menuitem page</li>
+       <li class="unordered-list">Order_item page</li>
+       <li class="unordered-list">restaurant_table page</li>
+      <li class="unordered-list">waiter</li>
+    </ul>    
+    <button>Login</button>
+    <a href ="{% url 'category_page'%} " >category_page</a>
+    <a href ="{% url 'customer_order_page'%} " >customerorder_page</a>
+    <a href ="{% url 'login_page'%} " >login_page</a>
+    <a href ="{% url 'menu_page'%} " >menu_page</a>
+    <a href ="{% url 'restaurant_table_page'%}" > restaurant_table</a>
+    <a href ="{% url 'order_item_page'%}" > Order_item</a>
+    <a href ="{% url 'waiter_page'%}" > waiter</a>
+    <a href ="{% url 'menuitem_page'%}">menu_item</a>
+    <a href = "{% url 'add_waiter_page'%}">add-waiter</a>
+    
+
+</body>
+</html>
