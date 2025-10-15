@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from Restaurantapp.forms import WaiterForm
-from Restaurantapp.models import Waiter
+from Restaurantapp.forms import WaiterForm,CategoryForm
+from Restaurantapp.models import Waiter,Category
 from django.shortcuts import render, redirect
 # Create your views here.
 def category_veiw(request):
@@ -64,3 +64,45 @@ def delete_waiter_veiw(request, waiter_id) :
     waiter = Waiter.objects.get(id=waiter_id)
     waiter.delete()
     return redirect (add_waiter_veiw)
+
+
+def add_category_veiw(request):
+    message = ''
+    if request.method == "POST":
+        category_form = CategoryForm(request.POST)
+        if category_form.is_valid():
+            category_form.save()
+            message = "Category Added Successfully"
+    else:
+        category_form=CategoryForm()
+        categorys = Category.objects.all ()
+    context = {
+        'form' : category_form,
+        'msg' : message,
+        'categorys' : categorys,
+    }
+    return render (request,"add_category.html",context)
+def edit_category_veiw(request,category_id):
+    message  = ''
+    category = Category.objects.get(id=category_id)
+    if request.method == "POST":
+        category_form = CategoryForm(request.POST,instance=category)
+        if category_form.is_valid():
+            category_form.save()
+            message = "Changes Saved "
+        else :
+            message = "Form has invalid data"
+    else:
+        category_form = CategoryForm(instance=category)
+        context = {
+            'form' : category_form,
+            'message' : message,
+            'category' : category,
+        }
+        return render ('request','edit_category.html',context)
+    
+    def delete_category_veiw(request, category_id) :
+         category = Category.objects.get(id=category_id)
+         category.delete()
+         return redirect (add_category_veiw)
+    
