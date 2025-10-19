@@ -1,0 +1,25 @@
+
+<html>
+{% load crispy_forms_tags %}
+{% load static %}
+<head>
+    <title> editing order-item page </title>
+    <link rel="stylesheet" href ="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+     <h1> Edit-{{orderitem.menu_id}}</h1>
+     <h1> Edit-{{orderitem.customer_order_id}}</h1>
+     <h1> Edit-{{orderitem.Quantity}}</h1>
+     <div class = "container">
+        <form method = "POST">
+             {% csrf_token %}
+             {{form}}
+             <input type ="submit" class= "btn btn-primary">
+             <input type = "button" class = "btn btn-danger">
+             {% if message %}
+                   {{message}}
+             {% endif %}
+        </form>
+     </div>
+</body>
+</html>
