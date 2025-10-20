@@ -2,6 +2,8 @@ from django.shortcuts import render
 from Restaurantapp.forms import WaiterForm,CategoryForm , MenuForm,MenuitemForm,FooditemForm,OrderitemForm,CustomerorderForm,RestuaranttableForm
 from Restaurantapp.models import Waiter,Category , Menu , Menu_item,Food_item,Order_item,Customer_order,Restaurant_table
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+
 # Create your views here.
 def category_veiw(request):
     return render (request, 'category.html')
@@ -332,6 +334,8 @@ def add_restuarant_table_veiw (request):
         if restuarant_table_form.is_valid():
             restuarant_table_form.save()
             message="restuarant-table added successfully"
+        else:
+            message = "error saving table"
     else:
         restuarant_table_form = RestuaranttableForm()
         
@@ -365,3 +369,22 @@ def delete_restuarant_table_veiw(request, restuaranttable_id) :
     restuaranttable = Restaurant_table.objects.get(id=restuaranttable_id)
     restuaranttable.delete()
     return redirect (add_restuarant_table_veiw)
+
+
+def sign_up_view(request):
+    if request.method == "POST":
+        sign_up_form = UserCreationForm(request.POST)
+        
+        if sign_up_form.is_valid():
+            sign_up_form.save()
+            message = 'User created successfully'
+        else:
+            message = 'Access Denayed'
+    else:
+        sign_up_form = UserCreationForm()
+    context = {
+        'form' : sign_up_form,
+        
+        
+    }
+    return render(request,'registration/sign_up.html',context)

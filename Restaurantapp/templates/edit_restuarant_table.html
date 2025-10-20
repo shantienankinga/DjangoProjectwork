@@ -1,16 +1,10 @@
-
-<html>
+{% extends "./base.html" %}
 {% load crispy_forms_tags %}
-{% load static %}
-<head>
-    <title> editing restuarant-table-page </title>
-    <link rel="stylesheet" href ="{% static 'css/bootstrap.min.css' %}">
-</head>
-<body>
+{% block content %}
      <h1> Edit-{{restauranttable.location}}</h1>
      <h1> Edit-{{restauranttable.status}}</h1>
      <h1> Edit-{{restauranttable.table_no}}</h1>
-     <div class = "container">
+     
         <form method = "POST">
              {% csrf_token %}
              {{form}}
@@ -20,6 +14,5 @@
                    {{message}}
              {% endif %}
         </form>
-     </div>
-</body>
-</html>
+     
+{% endblock content %}

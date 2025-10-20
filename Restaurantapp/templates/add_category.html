@@ -1,16 +1,7 @@
-<html lang="en">
-    {% load static %}
-    {% load crispy_forms_tags %}
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AddCategory</title>
-    <link rel="stylesheet" href ="{% static 'css/bootstrap.min.css' %}">
-</head>
-<body>
+{% extends "./base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
     <h1>Add-category</h1>
-    <div class = "container">
         <form method = "POST">
             {% csrf_token %}
             {{form|crispy }}
@@ -19,7 +10,6 @@
         {% if msg %}
            {{ msg }}
         {% endif %}
-    <div>
     <table class = "table,table-striped">
         <thead>
             <tr>
@@ -39,5 +29,5 @@
                 </td>
             <tr>
             {% endfor %}
-        </body>
     </table>
+{% endblock content %}

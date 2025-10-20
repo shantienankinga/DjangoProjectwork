@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Restaurantapp.views import category_veiw, Customer_order_veiw,firsthome_veiw,fooditem_veiw,login_veiw,menu_veiw,menuitem_veiw,Order_item_veiw,restaurant_table_veiw,waiter_veiw,add_waiter_veiw,edit_waiter_veiw,delete_waiter_veiw,add_category_veiw,edit_category_veiw, delete_category_veiw,add_menu_veiw,edit_menu_veiw,delete_menu_veiw,add_menu_item_veiw,edit_menu_item_veiw,delete_menu_item_veiw,add_food_item_veiw,delete_food_item_veiw,edit_food_item_veiw,add_order_item_veiw,edit_order_item_veiw,delete_order_item_veiw,add_customer_order_veiw,delete_customer_order_veiw,edit_customer_order_veiw,edit_restuarant_table_veiw,add_restuarant_table_veiw,delete_restuarant_table_veiw
+from Restaurantapp.views import category_veiw, Customer_order_veiw,firsthome_veiw,fooditem_veiw,login_veiw,menu_veiw,menuitem_veiw,Order_item_veiw,restaurant_table_veiw,waiter_veiw,add_waiter_veiw,edit_waiter_veiw,delete_waiter_veiw,add_category_veiw,edit_category_veiw, delete_category_veiw,add_menu_veiw,edit_menu_veiw,delete_menu_veiw,add_menu_item_veiw,edit_menu_item_veiw,delete_menu_item_veiw,add_food_item_veiw,delete_food_item_veiw,edit_food_item_veiw,add_order_item_veiw,edit_order_item_veiw,delete_order_item_veiw,add_customer_order_veiw,delete_customer_order_veiw,edit_customer_order_veiw,edit_restuarant_table_veiw,add_restuarant_table_veiw,delete_restuarant_table_veiw,sign_up_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',category_veiw, name='category_page'),
@@ -64,6 +64,8 @@ urlpatterns = [
     path('add_restuarant_table/',add_restuarant_table_veiw,name='add_restuarant_table_page'),
     path('edit_restuarant_table/<int:restuaranttable_id>/',edit_restuarant_table_veiw,name='edit_restuarant_table_page'),
     path('delete_restuarant_table/<int:restuaranttable_id>/',delete_restuarant_table_veiw,name='delete_restuarant_table_page'),
+    
+    path('sign_up/',sign_up_view,name='sign_up_page'),
 
 
 ]
