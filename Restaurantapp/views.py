@@ -51,13 +51,15 @@ def edit_waiter_veiw(request, waiter_id):
         if Waiter_form.is_valid():
             Waiter_form.save()
             message="Changes saved sucessfully"
+            return redirect(add_waiter_veiw)
         else:
             message="form has invalid data"
+            
     else:
         Waiter_form = WaiterForm(instance=waiter)
     context ={
         'form' : Waiter_form,
-        'waiter' : waiter,
+        'waiter' : waiter, 
         'message' : message,
     }
     return render (request ,'edit_waiter.html',context)
@@ -93,6 +95,7 @@ def edit_category_veiw(request,category_id):
         if category_form.is_valid():
             category_form.save()
             message = "Changes Saved "
+            return redirect(add_category_veiw)
         else :
             message = "Form has invalid data"
     else:
@@ -137,6 +140,7 @@ def edit_menu_veiw(request, menu_id):
         if menu_form.is_valid():
             menu_form.save()
             message="Changes saved sucessfully"
+            return redirect(add_menu_veiw)
         else:
             message="form has invalid data"
     else:
@@ -180,6 +184,7 @@ def edit_menu_item_veiw(request, menuitem_id):
         if menu_item_form.is_valid():
             menu_item_form.save()
             message="Changes saved sucessfully"
+            return redirect(add_menu_item_veiw)
         else:
             message="form has invalid data"
     else:
@@ -223,6 +228,7 @@ def edit_food_item_veiw(request, fooditem_id):
         if food_item_form.is_valid():
             food_item_form.save()
             message="Changes saved sucessfully"
+            return redirect(add_food_item_veiw)
         else:
             message="form has invalid data"
     else:
@@ -267,6 +273,7 @@ def edit_order_item_veiw(request, orderitem_id):
         if order_item_form.is_valid():
             order_item_form.save()
             message="Changes saved sucessfully"
+            return redirect(add_order_item_veiw)
         else:
             message="form has invalid data"
     else:
@@ -309,6 +316,7 @@ def edit_customer_order_veiw(request, customerorder_id):
         if customer_order_form.is_valid():
             customer_order_form.save()
             message="Changes saved sucessfully"
+            return redirect(add_customer_order_veiw)
         else:
             message="form has invalid data"
     else:
@@ -354,6 +362,7 @@ def edit_restuarant_table_veiw(request, restuaranttable_id):
         if restuarant_table_form.is_valid():
             restuarant_table_form.save()
             message="Changes saved sucessfully"
+            return redirect(add_restuarant_table_veiw)
         else:
             message="form has invalid data"
     else:

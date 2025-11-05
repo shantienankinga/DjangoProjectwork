@@ -2,22 +2,23 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <h1>Add-category</h1>
-        <form method = "POST">
+        <form method="POST">
             {% csrf_token %}
-            {{form|crispy }}
-            <input type = "submit" class = "btn btn-success">
+            {{ form|crispy }}
+            <input type="submit" class = "btn btn-success">
         </form>
         {% if msg %}
            {{ msg }}
         {% endif %}
-    <table class = "table,table-striped">
+    <table class="table table-striped">
         <thead>
             <tr>
+                <th scope = "col">id </th>  
                 <th scope = "col">Name </th>
             <tr>
         </thead>
         <tbody>
-            {% for category in categorys%}
+            {% for category in categorys %}
             <tr>
                 <th scope = "row">{{category.id}}</th>
                 <td> {{category.name}} </td>

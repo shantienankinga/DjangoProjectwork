@@ -4,15 +4,16 @@
        <h1>Customer-order</h1> 
            <form method="POST">
                   {% csrf_token %}
-                  {{form|crispy}}
+                  {{ form|crispy }}
                   <input type="submit" class="btn btn-success">
            </form> 
            {% if msg %}
                {{msg}}
            {% endif %}
-        <table class = "table, table-striped">
+        <table class = "table  table-striped">
             <thead>
                 <tr>
+                    <th scope = "col">id </th>  
                     <th scope = "col">table_no</th>  
                     <th scope = "col">waiterid</th>
                     <th scope = "col">order_status</th>  
@@ -23,7 +24,7 @@
              <tbody>
                 {% for customerorder in customerorders %}
                     <tr>
-                        <th scope = "row">{{customerorder.id}}</th>
+                        <th scope="row">{{customerorder.id}}</th>
                         <td> {{customerorder.table_no}} </td>
                         <td> {{customerorder.waiterid}} </td>
                         <td> {{customerorder.order_status}} </td>

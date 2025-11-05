@@ -51,6 +51,12 @@ class Order_item (models.Model) :
     menu_id = models.ForeignKey(Menu, verbose_name="menuid" , on_delete= models.CASCADE)
     customer_order_id = models.ForeignKey(Customer_order, verbose_name="customer_order_id" , on_delete= models.CASCADE)
     Quantity =models.IntegerField() 
+    Price = models.IntegerField()
+    @property
+    def amount(self):
+        return self.Quantity*self.Price
+
+
 
     
     

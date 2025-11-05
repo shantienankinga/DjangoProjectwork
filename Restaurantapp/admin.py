@@ -26,7 +26,7 @@ class MenuItemAdmin(admin.ModelAdmin):
 admin.site.register(Menu_item,MenuItemAdmin)
 
 class OrderitemAdmin(admin.ModelAdmin):
-    list_display = ("id","menu_id","customer_order_id","Quantity")
+    list_display = ("id","menu_id","customer_order_id","Quantity","Price","amount")
 admin.site.register(Order_item,OrderitemAdmin)
 
 class RestaurantTableAdmin(admin.ModelAdmin):
