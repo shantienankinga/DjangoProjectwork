@@ -32,7 +32,7 @@
                         <td> {{waiter.contact}} </td>
                         <td> {{waiter.gender}} </td>
                         <td>
-                            <a href = "{% url 'edit_waiter_page' waiter.id %}" >Edit </a>
+                            <a href = "{% url 'edit_waiter_page' waiter.id %}" ><i class="fa fa-edit"></i>Edit </a>
                             <a href = "  {% url 'delete_waiter_page' waiter.id %}" 
                                onclick ="return confirm('Are you sure you want to delete')">Delete
                             </a>

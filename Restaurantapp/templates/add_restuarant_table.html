@@ -29,7 +29,7 @@
                         <td> {{restauranttable.status}} </td>
                         <td> {{restauranttable.location}} </td>
                         <td>
-                            <a href = "{% url 'edit_restuarant_table_page' restauranttable.id %}" >Edit </a>
+                            <a href = "{% url 'edit_restuarant_table_page' restauranttable.id %}" ><i class="fa fa-edit"></i>Edit </a>
                             <a href = "  {% url 'delete_restuarant_table_page' restauranttable.id %}" 
                                onclick ="return confirm('Are you sure you want to delete')">Delete
                             </a>

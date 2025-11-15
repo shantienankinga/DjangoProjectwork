@@ -29,7 +29,7 @@
                         <td> {{orderitem.Quantity}} </td>
                         
                         <td>
-                            <a href = "{% url 'edit_order_item_page' orderitem.id %}" >Edit </a>
+                            <a href = "{% url 'edit_order_item_page' orderitem.id %}" > <i class="fa fa-edit"></i>Edit </a>
                             <a href = "  {% url 'delete_order_item_page' orderitem.id %}" 
                                onclick ="return confirm('Are you sure you want to delete')">Delete
                             </a>

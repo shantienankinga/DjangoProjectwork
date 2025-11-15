@@ -3,7 +3,8 @@ from Restaurantapp.forms import WaiterForm,CategoryForm , MenuForm,MenuitemForm,
 from Restaurantapp.models import Waiter,Category , Menu , Menu_item,Food_item,Order_item,Customer_order,Restaurant_table
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 # Create your views here.
 def category_veiw(request):
     return render (request, 'category.html')
@@ -26,6 +27,7 @@ def restaurant_table_veiw(request):
 def waiter_veiw(request):
     return render (request,'waiter.html')
 
+@ login_required
 def add_waiter_veiw (request):
     message = ''
     waiters = Waiter.objects.all()
@@ -43,6 +45,7 @@ def add_waiter_veiw (request):
     }
     return render(request ,"add_waiter.html" , context)
 
+@ login_required
 def edit_waiter_veiw(request, waiter_id):
     message=''
     waiter = Waiter.objects.get(id = waiter_id)
@@ -64,12 +67,14 @@ def edit_waiter_veiw(request, waiter_id):
     }
     return render (request ,'edit_waiter.html',context)
 
+@ login_required
 def delete_waiter_veiw(request, waiter_id) :
     waiter = Waiter.objects.get(id=waiter_id)
     waiter.delete()
     return redirect (add_waiter_veiw)
 
 
+@ login_required
 def add_category_veiw(request):
     message = ''
     categorys = Category.objects.all()
@@ -87,6 +92,8 @@ def add_category_veiw(request):
         'categorys' : categorys,
     }
     return render(request ,"add_category.html", context)
+
+@ login_required
 def edit_category_veiw(request,category_id):
     message  = ''
     category = Category.objects.get(id = category_id)
@@ -108,12 +115,14 @@ def edit_category_veiw(request,category_id):
         }
         return render (request,'edit_category.html',context)
     
+    
+@ login_required   
 def delete_category_veiw(request, category_id):
         category = Category.objects.get(id=category_id)
         category.delete()
         return redirect (add_category_veiw)
 
-
+@ login_required
 def add_menu_veiw (request):
     message = ''
     menus = Menu.objects.all()
@@ -132,6 +141,7 @@ def add_menu_veiw (request):
     }
     return render(request ,"add_menu.html" , context)
 
+@ login_required
 def edit_menu_veiw(request, menu_id):
     message=''
     menu = Menu.objects.get(id = menu_id)
@@ -152,12 +162,13 @@ def edit_menu_veiw(request, menu_id):
     }
     return render (request ,'edit_menu.html',context)
 
+@ login_required
 def delete_menu_veiw(request, menu_id) :
     menu = Menu.objects.get(id=menu_id)
     menu.delete()
     return redirect (add_menu_veiw)
 
-
+@ login_required
 def add_menu_item_veiw (request):
     message = ''
     menuitems = Menu_item.objects.all()
@@ -176,6 +187,7 @@ def add_menu_item_veiw (request):
     }
     return render(request ,"add_menu_item.html" , context)
 
+@ login_required
 def edit_menu_item_veiw(request, menuitem_id):
     message=''
     menuitem = Menu_item.objects.get(id = menuitem_id)
@@ -202,6 +214,7 @@ def delete_menu_item_veiw(request, menuitem_id) :
     return redirect (add_menu_item_veiw)
 
 
+@ login_required
 def add_food_item_veiw (request):
     message = ''
     fooditems = Food_item.objects.all()
@@ -220,6 +233,7 @@ def add_food_item_veiw (request):
     }
     return render(request ,"add_food_item.html" , context)
 
+@ login_required
 def edit_food_item_veiw(request, fooditem_id):
     message=''
     fooditem = Food_item.objects.get(id = fooditem_id)
@@ -240,13 +254,14 @@ def edit_food_item_veiw(request, fooditem_id):
     }
     return render (request ,'edit_food_item.html',context)
 
+@ login_required
 def delete_food_item_veiw(request, fooditem_id) :
     fooditem = Food_item.objects.get(id=fooditem_id)
     fooditem.delete()
     return redirect (add_food_item_veiw)
 
 
-
+@ login_required
 def add_order_item_veiw (request):
     message = ''
     orderitems = Order_item.objects.all()
@@ -265,6 +280,7 @@ def add_order_item_veiw (request):
     }
     return render(request ,"add_order_item.html" , context)
 
+@ login_required
 def edit_order_item_veiw(request, orderitem_id):
     message=''
     orderitem = Order_item.objects.get(id = orderitem_id)
@@ -285,11 +301,13 @@ def edit_order_item_veiw(request, orderitem_id):
     }
     return render (request ,'edit_order_item.html',context)
 
+@ login_required
 def delete_order_item_veiw(request, orderitem_id) :
     orderitem = Order_item.objects.get(id=orderitem_id)
     orderitem.delete()
     return redirect (add_order_item_veiw)
 
+@ login_required
 def add_customer_order_veiw (request):
     message = ''
     customerorders = Customer_order.objects.all()
@@ -308,6 +326,7 @@ def add_customer_order_veiw (request):
     }
     return render(request ,"add_customer_order.html" , context)
 
+@ login_required
 def edit_customer_order_veiw(request, customerorder_id):
     message=''
     customerorder = Customer_order.objects.get(id = customerorder_id)
@@ -328,12 +347,13 @@ def edit_customer_order_veiw(request, customerorder_id):
     }
     return render (request ,'edit_customer_order.html',context)
 
+@ login_required
 def delete_customer_order_veiw(request, customerorder_id) :
     customerorder = Customer_order.objects.get(id=customerorder_id)
     customerorder.delete()
     return redirect (add_customer_order_veiw)
     
-
+@ login_required
 def add_restuarant_table_veiw (request):
     message = ''
     restuaranttables = Restaurant_table.objects.all()
@@ -354,6 +374,7 @@ def add_restuarant_table_veiw (request):
     }
     return render(request ,"add_restuarant_table.html" , context)
 
+@ login_required
 def edit_restuarant_table_veiw(request, restuaranttable_id):
     message=''
     restuaranttable = Restaurant_table.objects.get(id = restuaranttable_id)
@@ -373,7 +394,7 @@ def edit_restuarant_table_veiw(request, restuaranttable_id):
         'message' : message,
     }
     return render (request ,'edit_restuarant_table.html',context)
-
+@ login_required
 def delete_restuarant_table_veiw(request, restuaranttable_id) :
     restuaranttable = Restaurant_table.objects.get(id=restuaranttable_id)
     restuaranttable.delete()
@@ -381,6 +402,7 @@ def delete_restuarant_table_veiw(request, restuaranttable_id) :
 
 
 def sign_up_view(request):
+    message = ''
     if request.method == "POST":
         sign_up_form = UserCreationForm(request.POST)
         
@@ -393,7 +415,12 @@ def sign_up_view(request):
         sign_up_form = UserCreationForm()
     context = {
         'form' : sign_up_form,
+        'message' : message,
         
         
     }
     return render(request,'registration/sign_up.html',context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
